@@ -1,5 +1,6 @@
 <?php
   require('../lib/User_Model.php');
+  session_start();
 
   $user_model = new User_Model();
 
@@ -21,12 +22,24 @@
 
   $userdata = array(
     'name' => $_POST['username'],
-    'pass' => password_hash($_POST['password'] , PASSWORD_DEFAULT);
+    'pass' => password_hash($_POST['password'] , PASSWORD_DEFAULT)
   );
 
-  if($user_model->create($userdata)){
+  if($user_model->create($userdata)){ // Neu them du lieu thanh cong
     $return_data['status'] = 'success';
 
+    $username = $_POST['username'];
+
+    $data = $user_model->get_where("name = '$username'");
+
+    $_SESSION['username'] = $username;
+    $_SESSION['id'] = $data[0]['id']; // Luu session
+
     die(json_encode($return_data));
-  }// Neu them du lieu thanh cong
+  }else { // Co loi xay ra
+    $return_data['status'] = 'error';
+    $return_data['error'] = 'Đã có lỗi xảy ra, vui lòng thử lại sau';
+
+    die(json_encode($return_data));
+  }
  ?>

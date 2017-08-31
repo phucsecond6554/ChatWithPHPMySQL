@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  if(isset($_SESSION['username'])){ // Neu da dang nhap
+    header('Location: User_List.php'); // Chuyen qua danh sach nguoi dung
+  }
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -36,7 +44,7 @@
             <input type="radio" name="type" value="signup" id="signup"> Sign up
           </div> <!--Type -->
 
-          <i id="error"></i>
+          <i id="error" style="display:block"></i>
 
           <button type="button" name="button" id="sign_btn" class="btn btn-default">Sign in</button>
         </form>

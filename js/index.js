@@ -38,7 +38,14 @@
         contentType: false,
         type: 'POST',
         success: function(result){
-          console.log(result);
+          var json = JSON.parse(result);
+
+          if(json.status == "error"){ // Neu co loi
+            $("#error").text(json.error); // Thong bao loi cho nguoi dung
+          }else if(json.status == "success"){ // Thanh cong
+            window.location = "http://localhost/ChatWithPHPMySQL/User_List.php";
+            //alert("HInh nhu dung roi day ban a");
+          }
         }
     });
   } // Function signin
@@ -52,12 +59,19 @@
         cache: false,
         processData: false,
         contentType: false,
-        type: 'POST',
+        type: 'post',
         success: function(result){
-          console.log(result);
-        }
+          var json = JSON.parse(result);
+
+          if(json.status == "error"){ // Neu co loi
+            $("#error").text(json.error); // Thong bao loi cho nguoi dung
+          }else if(json.status == "success"){ // Thanh cong
+            window.location = "http://localhost/ChatWithPHPMySQL/User_List.php";
+          }
+        } // Function success
     });
-  };
+  }; // Function signup
+
 
   function match_password(){
     var pass1 = $("#pass1").val();
@@ -66,17 +80,21 @@
     if(pass1 !== pass2){
       alert("Password không trùng khớp")
       return false;
+    }else {
+      return true;
     }
   }
 
   $("#sign_btn").click(function(event){
     event.preventDefault();
+    $("#error").text("");
 
     if(current_mode == "signin"){
       signin();
     }else if(current_mode == "signup"){
-      match_password();
-      signup();
+      if(match_password()){
+        signup();
+      }
     }
   });
 })();

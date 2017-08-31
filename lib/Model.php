@@ -11,7 +11,7 @@
     protected $server = 'localhost';
     protected $user = 'root';
     protected $pass = '';
-    protected $db = 'quiz';
+    protected $db = 'Simple_Chat';
 
     function __construct()
     {

@@ -19,7 +19,7 @@ require('Model.php');
 
       $data = mysqli_fetch_assoc($query);
 
-      return $data[0]['number'] == 1;
+      return $data['number'] == 1;
     }
   }
 
