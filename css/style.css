@@ -1,0 +1,37 @@
+.message_box{
+  height: 500px;
+  overflow: auto;
+}
+.mess{
+  max-width: 50%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 7px;
+  margin-top: 20px;
+}
+
+.me{
+  background-color: #4080ff;
+  float: right;
+  clear: both;
+  color: white;
+}
+
+.other{
+  background-color: lightgray;
+  clear: right;
+}
+
+.input_box{
+  margin-top: 30px;
+}
+
+.input_box input[type=text]{
+  width: 92%;
+  display: inline-block;
+}
+
+.input_box button{
+  width: 7%;
+  display: inline-block;
+}

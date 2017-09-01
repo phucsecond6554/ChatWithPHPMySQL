@@ -22,9 +22,9 @@
           html += "<td>" + item['name'] + "</td>";
 
           // Xu li button chat
-          var button = "<form action='chat.php' method='post'>";
+          var button = "<form action='Chat.php' method='post'>";
           button += `<input type='hidden' name='user_to' value='${item['id']}'>`;
-          button += "<button type='button' name='button' class='btn btn-primary'>Chat</button>"
+          button += "<button type='submit' name='button' class='btn btn-primary'>Chat</button>"
           button += "</form>";
 
           html += "<td>" + button + "</td>";

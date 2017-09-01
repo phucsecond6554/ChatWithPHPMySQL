@@ -32,9 +32,9 @@
               <td><?php echo $item['id'] ?></td>
               <td><?php echo $item['name'] ?></td>
               <td>
-                <form action="chat.php" method="post">
+                <form action="Chat.php" method="post">
                   <input type="hidden" name="user_to" value="<?php echo $item['id'] ?>">
-                  <button type="button" name="button" class="btn btn-primary">Chat</button>
+                  <button type="submit" name="button" class="btn btn-primary">Chat</button>
                 </form>
               </td>
             </tr>
@@ -49,7 +49,5 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 
-  <script src="js/userlist.js">
-
-  </script>
+  <script src="js/userlist.js"></script>
 </html>
