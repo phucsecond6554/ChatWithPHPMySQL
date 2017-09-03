@@ -9,6 +9,8 @@ $user_model = new User_Model();
 
 $update_mess = $mess_model->get_message($_SESSION['id'], $_POST['to_user']);
 
+$mess_model->update(array('state' => 'seen'), 'from_user='.$_POST['to_user'].' and to_user='.$_SESSION['id']);
+
 die(json_encode(
   array(
   'data' => $update_mess,

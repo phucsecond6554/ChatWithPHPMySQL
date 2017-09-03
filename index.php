@@ -2,7 +2,7 @@
   session_start();
 
   if(isset($_SESSION['username'])){ // Neu da dang nhap
-    header('Location: User_List.php'); // Chuyen qua danh sach nguoi dung
+    header('Location: Notification.php'); // Chuyen qua danh sach nguoi dung
   }
  ?>
 
