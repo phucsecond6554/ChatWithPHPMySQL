@@ -3,6 +3,12 @@
   require('lib/User_Model.php');
   session_start();
 
+  if(!isset($_SESSION['username'])){
+    // Neu chua dang nhap
+    header('Location: index.php'); // Chuyen ve trang chu
+    ///die('Chua dang nhap');
+  }
+
   $mess_model = new Message_Model();
   $user_model = new User_Model();
 
@@ -31,7 +37,13 @@
         <th>Reply</th>
       </tr>
 
-      <?php foreach($miss_message as $data){ ?>
+      <?php
+        if(count($miss_message) == 0){
+          echo '<h5>Hiện không có tin nhắn nào cho bạn';
+        }else
+        {
+          foreach($miss_message as $data){
+      ?>
         <tr>
           <td><?php echo $data['name'] ?></td>
           <td>
@@ -41,8 +53,10 @@
             </form>
           </td>
         </tr>
-      <?php } ?>
+      <?php } }?>
     </table>
+
+    <a href="User_List.php" class="btn btn-primary">Tìm bạn bè</a>
   </body>
 
   <script
@@ -50,37 +64,5 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 
-  <script>
-  function update_noti(){
-      $.ajax({
-        url : "http://localhost/ChatWithPHPMySQL/Notification.php",
-        type : "POST",
-        dataType : "json",
-        success: function(result){
-          var html = "<tr>";
-          html += "<th>Tên người nhắn </th>";
-          html += "<th>Reply</td>";
-          html += "</tr>";
-
-          $.each(result['data'] , function(key, item){
-            html += "<tr>";
-            html += "<td>" + item['name'] + "</td>";
-
-            // Xu li button chat
-            var button = "<form action='Chat.php' method='post'>";
-            button += `<input type='hidden' name='user_to' value='${item['from_user']}'>`;
-            button += "<button type='submit' name='button' class='btn btn-primary'>Chat</button>"
-            button += "</form>";
-
-            html += "<td>" + button + "</td>";
-            html += "</tr>";
-          });// Vong lap
-
-          //$("#noti_table").html(html);
-        }
-      });
-    } // Function update_noti
-
-    setInterval(update_noti(), 1000);
-  </script>
+  <script src="js/Notification.js"></script>
 </html>

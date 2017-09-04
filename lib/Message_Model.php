@@ -32,7 +32,7 @@ require_once('Model.php');
     function find_miss_message($to){
       // Tim nhung tin nhan co to_user la cua minh va trang thai la not_seen
       $sql = "Select m.from_user, u.name from message m join all_user u on m.from_user = u.id";
-      $sql .= " where m.state = 'not_seen' group by from_user";
+      $sql .= " where m.state = 'not_seen' and m.to_user = $to group by from_user";
 
       $data = array();
 

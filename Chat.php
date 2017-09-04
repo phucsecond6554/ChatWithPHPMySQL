@@ -29,7 +29,7 @@
   <body>
     <div class="container">
       <div class="main_box">
-        <h1><?php echo $user_from_name ?></h1>
+        <h1><?php echo $user_from_name .' Đang chat với '.$user_to_name ?></h1>
         <div class="message_box" id="message_box">
           <?php
             foreach($mess_data as $message){

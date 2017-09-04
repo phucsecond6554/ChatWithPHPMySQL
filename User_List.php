@@ -1,5 +1,11 @@
 <?php
   require('lib/User_Model.php');
+  session_start();
+
+  if(!isset($_SESSION['id'])){
+    // Neu chua dang nhap
+    header('Location : index.php'); // Chuyen ve trang chu
+  }
 
   $user_model = new User_Model();
 
